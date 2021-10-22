@@ -1,16 +1,14 @@
 provider "azurerm" {
   version = "~> 2.20.0"
-  subscription_id = "${var.subscription_id}"
-  tenant_id = "${var.tenant_id}"
   features {}
 }
 
 // https://www.terraform.io/docs/providers/azurerm/r/resource_group.html
-resource "azurerm_resource_group" "andys-new-resource-group" {
+resource "azurerm_resource_group" "hackerwavearg" {
   lifecycle {
     prevent_destroy = false
   }
-  name     = "andys-new-resourse-group"
+  name     = "rxt${var.resourcecoprefix}-${var.environments[terraform.workspace]}"
   location = var.selected_region
 
   tags = {
