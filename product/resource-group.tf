@@ -4,11 +4,11 @@ provider "azurerm" {
 }
 
 // https://www.terraform.io/docs/providers/azurerm/r/resource_group.html
-resource "azurerm_resource_group" "hackerwavearg" {
+resource "azurerm_resource_group" "hackerwaverg" {
   lifecycle {
     prevent_destroy = false
   }
-  name     = "rxt${var.resourcecoprefix}-${var.environments[terraform.workspace]}"
+  name     = "hw${var.resourcecoprefix}-${var.environments[terraform.workspace]}"
   location = var.selected_region
 
   tags = {

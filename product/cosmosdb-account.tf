@@ -1,9 +1,9 @@
 # https://www.terraform.io/docs/providers/azurerm/r/cosmosdb_account.html
 
 resource "azurerm_cosmosdb_account" "db" {
-  name            = "rxt${var.resourcecoprefix}-orderstore-cs-${var.environments[terraform.workspace]}"
-  location            = azurerm_resource_group.hackerwavearg.location
-  resource_group_name = azurerm_resource_group.hackerwavearg.name
+  name            = "hw${var.resourcecoprefix}-orderstore-cs-${var.environments[terraform.workspace]}"
+  location            = azurerm_resource_group.hackerwaverg.location
+  resource_group_name = azurerm_resource_group.hackerwaverg.name
   offer_type          = "Standard"
   kind                = "GlobalDocumentDB"
 
@@ -15,8 +15,8 @@ resource "azurerm_cosmosdb_account" "db" {
   }
 
   geo_location {
-    prefix            = "rxt${var.resourcecoprefix}-cosmosdbgeo-${var.environments[terraform.workspace]}"
-    location          = azurerm_resource_group.hackerwavearg.location
+    prefix            = "hw${var.resourcecoprefix}-cosmosdbgeo-${var.environments[terraform.workspace]}"
+    location          = azurerm_resource_group.hackerwaverg.location
     failover_priority = 0
   }
 

@@ -10,6 +10,7 @@ variable "cosmos_db_account_name" {
 }
 variable "selected_region" {
   default     = "uksouth"
+  # default     = "southcentralus"
   description = "Select region for deployment"
 }
 variable "build" {
