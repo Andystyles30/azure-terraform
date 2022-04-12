@@ -1,6 +1,6 @@
 # https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/app_service
 
-resource "azurerm_app_service_plan" "reactivities_appserviceplace" {
+resource "azurerm_app_service_plan" "reactivities_appservice" {
   name                = "hw${var.resourcecoprefix}-reactivitiesapi-sp-${var.environments[terraform.workspace]}"
   location            = azurerm_resource_group.hackerwaverg.location
   resource_group_name = azurerm_resource_group.hackerwaverg.name
@@ -24,19 +24,31 @@ resource "azurerm_app_service" "reactivitiesapi_appservice" {
   name                = "hw${var.resourcecoprefix}-reactivitiesapi-as-${var.environments[terraform.workspace]}"
   location            = azurerm_resource_group.hackerwaverg.location
   resource_group_name = azurerm_resource_group.hackerwaverg.name
-  app_service_plan_id = azurerm_app_service_plan.reactivities_appserviceplace.id
+  app_service_plan_id = azurerm_app_service_plan.reactivities_appservice.id
 
-  # site_config {
-  #   always_on                   = true
-  #   min_tls_version             = 1.2
-  #   cors {
-  #     support_credentials       = true
-  #     allowed_origins           = []
-  #   }
-  # }
+  site_config {
+    default_documents = [
+      "Default.htm",
+      "Default.html",
+      "Default.asp",
+      "index.htm",
+      "index.html",
+      "iisstart.htm",
+      "default.aspx",
+      "index.php",
+      "hostingstart.html",
+    ]
+    scm_type = "VSTSRM"
+    min_tls_version             = 1.2
+    use_32_bit_worker_process   = true
+    cors {
+      support_credentials       = true
+      allowed_origins           = []
+    }
+  }
 
   app_settings = {
-    "SOME_KEY" = "some-value"
+    "TokenKey" = "_/)G=bblmNhLz2r:f5qxYT*cAFl{E?"
   }
 
   lifecycle {
