@@ -48,12 +48,15 @@ resource "azurerm_app_service" "reactivitiesapi_appservice" {
   }
 
   app_settings = {
-    "TokenKey" = "_/)G=bblmNhLz2r:f5qxYT*cAFl{E?"
+    "TokenKey"                         = "_/)G=bblmNhLz2r:f5qxYT*cAFl{E?"
+    "WEBSITE_RUN_FROM_PACKAGE"         = "1"
+    "WEBSITE_ENABLE_SYNC_UPDATE_SITE"  = "true"
   }
 
   lifecycle {
     ignore_changes = [
-      app_settings["WEBSITE_ENABLE_SYNC_UPDATE_SITE"]
+      app_settings["WEBSITE_ENABLE_SYNC_UPDATE_SITE"],
+      app_settings["WEBSITE_RUN_FROM_PACKAGE"]
     ]
   }
 }
