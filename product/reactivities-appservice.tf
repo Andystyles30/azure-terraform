@@ -42,8 +42,11 @@ resource "azurerm_app_service" "reactivitiesapi_appservice" {
     min_tls_version             = 1.2
     use_32_bit_worker_process   = true
     cors {
+      allowed_origins = [
+        "http://localhost:3000",
+        "https://hw${var.resourcecoprefix}webapp${var.environments[terraform.workspace]}.z33.web.core.windows.net",
+      ]
       support_credentials       = true
-      allowed_origins           = []
     }
   }
 
