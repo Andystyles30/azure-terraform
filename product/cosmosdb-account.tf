@@ -15,7 +15,6 @@
 #   }
 
 #   geo_location {
-#     prefix            = "hw${var.resourcecoprefix}-cosmosdbgeo-${var.environments[terraform.workspace]}"
 #     location          = azurerm_resource_group.hackerwaverg.location
 #     failover_priority = 0
 #   }

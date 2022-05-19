@@ -25,9 +25,9 @@ resource "azurerm_mysql_flexible_server_firewall_rule" "reactivities_mysql_firew
   end_ip_address      = "0.0.0.0"
 }
 
-resource "azurerm_mysql_flexible_server_configuration" "reactivities_mysql_secure_transport" {
-  name                = "require_secure_transport"
-  resource_group_name = azurerm_resource_group.hackerwaverg.name
-  server_name         = azurerm_mysql_flexible_server.reactivities_mysql.name
-  value               = "OFF"
-}
+# resource "azurerm_mysql_flexible_server_configuration" "reactivities_mysql_secure_transport" {
+#   name                = "require_secure_transport"
+#   resource_group_name = azurerm_resource_group.hackerwaverg.name
+#   server_name         = azurerm_mysql_flexible_server.reactivities_mysql.name
+#   value               = "OFF"
+# }
